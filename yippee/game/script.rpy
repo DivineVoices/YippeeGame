@@ -16,6 +16,7 @@ label start:
             renpy.run(OpenURL("https://www.youtube.com/watch?v=YYoOIGBcN48"))
 
     $ flag = False
+    $ MLove = 0
     scene club
 
     show maiko1 at active_char:
@@ -141,8 +142,39 @@ label start:
 
             return
 
-        p "Wanna go get some donuts?"
+        m "Wanna go get some donuts? I love donuts"
 
-        m "Hell yeah"
-            
+    menu:
+        "Yes, I love donuts":
+            jump Donuts_Win
+
+        "No, I don't like donuts":
+            jump Donuts_Loss
+
+
+    label Donuts_Win:
+        $ MLove = MLove + 2
+        m "Hell yeah!"
+        jump Donuts_Complete
+
+    label Donuts_Loss:
+        $ MLove = MLove + 1
+        m "Awe, That's sad"
+        jump Donuts_Complete
+
+
+    label Donuts_Complete:
+        m "Well I had a lot of fun today!"
+        if MLove == 2:
+            m "But, I think you're like, REALLY cool, we should hang out again!"
+        if MLove == 1:
+            m "You're cool, talk again yeah?"
+        "Maiko walks off without waiting for an answer"
+        hide maiko1
+        with dissolve
+        if MLove == 2:
+            "You got the great ending"
+        if MLove == 1:
+            "You got the good ending"
+        "Thanks for playing!"
     return

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 11: expected statement.
-    example input hide:
+File "game/script.rpy", line 173: if statement expects a non-empty block.
+    if MLove == 2:
                   ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Fri Jun  7 15:26:45 2024
+Mon Jun 10 16:36:26 2024
