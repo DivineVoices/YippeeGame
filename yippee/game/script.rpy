@@ -17,6 +17,12 @@ label start:
 
     $ flag = False
     $ MLove = 0
+    $ MTrack = 0
+    $ YTrack = 0
+    $ Day = 1
+
+    jump DayStart
+
     scene club
 
     show maiko1 at active_char:
@@ -34,8 +40,7 @@ label start:
         yalign 0.5
         xzoom -1.0
 
-
-    y "Hi I'm here too"
+    y "Ooh a knife!"
 
     show yuzu1 at inactive_char:
         xalign 0.25
@@ -177,4 +182,84 @@ label start:
         if MLove == 1:
             "You got the good ending"
         "Thanks for playing!"
+    
     return
+    
+    label DayStart:
+        scene club
+        menu:
+            "Who should I go on a date with?"
+
+            "Maiko":
+                jump MDates
+
+            "Yuzu":
+                jump YDates
+
+        label MDates:
+            label MDate1:
+                if MTrack >= 1:
+                    jump MDate2
+                m "This is the first date!"
+                m "I'm having a great time"
+                if YTrack >= 3:
+                    m "I do miss Yuzu though..."
+                $ MTrack = 1
+                jump DayEnd
+                
+            label MDate2:
+                if MTrack >= 2:
+                    jump MDate3
+                m "This is the second date!"
+                m "I'm having a great time again"
+                $ MTrack = 2
+                jump DayEnd
+
+            label MDate3:
+                if MTrack >= 3:
+                    "You have finished all the dates with Maiko"
+                    $ Day -= 1
+                    jump DayEnd
+                m "This is the third date!"
+                m "Wow Yuzu absolutely hates me now"
+                $ MTrack = 3
+                jump DayEnd
+
+
+        label YDates:
+            label YDate1:
+                if YTrack >= 1:
+                    jump YDate3
+                y "This is the first date!"
+                y "I'm having a great time"
+                if MTrack >= 3:
+                    m "But damn do I hate that bitch Maiko"
+                $ YTrack = 1
+                jump DayEnd
+
+            label YDate2:
+                if YTrack >= 2:
+                    jump YDate3
+                y "This is the second date!"
+                y "I'm having a great time again"
+                $ YTrack = 2
+                jump DayEnd
+
+            label YDate3:
+                if YTrack >= 3:
+                    "You have finished all the dates with Yuzu"
+                    $ Day -= 1
+                    jump DayEnd
+                y "This is the third date!"
+                y "I am now dead RIP"
+                $ YTrack = 3
+                jump DayEnd
+
+        label DayEnd:
+            $ Day += 1
+            if Day >= 5:
+                return
+            jump DayStart
+
+    return
+

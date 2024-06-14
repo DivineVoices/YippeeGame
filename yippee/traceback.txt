@@ -1,0 +1,28 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 203, in script
+    if Day =< 3:
+SyntaxError: invalid syntax (game/script.rpy, line 203)
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 203, in script
+    if Day =< 3:
+  File "C:\Users\dpereme\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 1845, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\dpereme\Downloads\renpy-8.2.2-sdk\renpy\python.py", line 1207, in py_eval
+    code = py_compile(code, 'eval')
+  File "C:\Users\dpereme\Downloads\renpy-8.2.2-sdk\renpy\python.py", line 1144, in py_compile
+    raise e
+  File "C:\Users\dpereme\Downloads\renpy-8.2.2-sdk\renpy\python.py", line 1081, in py_compile
+    raise orig_e
+  File "C:\Users\dpereme\Downloads\renpy-8.2.2-sdk\renpy\python.py", line 1073, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
+SyntaxError: invalid syntax (game/script.rpy, line 203)
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.2.2.24061201
+Yippee Gaming 1.0
+Fri Jun 14 16:37:29 2024
